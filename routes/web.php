@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [IdeaController::class, 'index'])->name('idea.index');
+    Route::get('/idea/{idea}', [IdeaController::class, 'show'])->name('idea.detail');
 });
 
-Route::get('/dashboard', function () {
-    return view('index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::view('/idea', 'show');
 
 require __DIR__.'/auth.php';
