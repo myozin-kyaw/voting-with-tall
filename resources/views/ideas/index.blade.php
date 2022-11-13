@@ -105,5 +105,7 @@
 
         @endforeach
 
+        {{ $ideas->links() }}
+
     </div> <!-- end ideas-container -->
 </x-app-layout>

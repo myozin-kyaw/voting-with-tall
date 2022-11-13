@@ -9,6 +9,8 @@ class Idea extends Model
 {
     use HasFactory;
 
+    const PAGINATION_COUNT = 5;
+
     protected $table = 'ideas';
 
     protected $fillable = [
